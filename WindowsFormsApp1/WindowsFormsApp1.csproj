@@ -5,11 +5,6 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Castle.Core" Version="4.4.0" />
-  </ItemGroup>
-
   <ItemGroup>
     <Compile Update="Form2.cs">
       <SubType>Form</SubType>
