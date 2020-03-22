@@ -6,19 +6,13 @@ namespace WindowsFormsApp1
 {
     public struct Question
     {
-        private String question { get; }
-        private String[] answear { get; }
-        private int correctAnswear { get; }
+        public String question { get; }
+        public List<String>answer { get; }
 
-        public Question(string question, string[] answear, int correctAnswear)
+        public Question(string question, List<string> answear)
         {
             this.question = question;
-            this.answear = answear;
-            this.correctAnswear = correctAnswear;
-        }
-        public int getPoints()
-        {
-            return 1;
+            this.answer = answear;
         }
     }
 }
