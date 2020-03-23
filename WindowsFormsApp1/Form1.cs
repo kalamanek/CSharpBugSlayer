@@ -23,32 +23,30 @@ namespace WindowsFormsApp1
             int points = 0;
             this.Hide();
 
-            new List< Tuple< Question, string> >()
+            new List< dynamic >()
             {
-                new Tuple<Question, string>( 
-                    new Question("2 + 2 is", new List<string>{ "4" , "5"}) ,
-                     "4" ),
+                new {
+                    first = new Question("2 + 2 is", new List<string>{ "4" , "5"}) ,
+                    second = "4" },
+                new {
+                    first = new Question("2 * 2 is", new List<string>{ "4" , "5" , "6"}) ,
+                    second = "4" },
+                new {
+                    first = new Question("2 + 3 is", new List<string>{ "4" , "5" , "6" , "7" }) ,
+                    second = "5" },
+                new {
+                    first = new Question("2 *3 is", new List<string>{ "4" , "5" , "6" , "7" , "8" }) ,
+                    second = "6" }
 
-                new Tuple<Question, string>( 
-                    new Question("2 * 2 is", new List<string>{ "4" , "5" , "6"}) ,
-                     "4" ),
+             }.ForEach(
+                 n  => {
+                     Form2 form = new Form2(n.first);
+                     form.questionAnswered +=  
+                        (result) => points += result.Equals(n.second) ? 1 : 0 ;
 
-                new Tuple<Question, string>( 
-                    new Question("2 + 3 is", new List<string>{ "4" , "5", "6" , "7"}) ,
-                     "5" ),
-
-                new Tuple<Question, string>( 
-                    new Question("2 * 2 is", new List<string>{ "4" , "5", "6" , "7" ,"8"}) ,
-                     "6" )
-
-             }.ForEach( tuple => {
-                 Form2 q = new Form2(tuple.Item1);
-                 q.questionAnswered +=  
-                    (result) => points += result.Equals(tuple.Item2) ? 1 : 0 ;
-
-                 q.StartPosition = FormStartPosition.Manual;
-                 q.Location = this.Location;
-                 q.ShowDialog();
+                     form.StartPosition = FormStartPosition.Manual;
+                     form.Location = this.Location;
+                     form.ShowDialog();
              });
 
             this.Show();
